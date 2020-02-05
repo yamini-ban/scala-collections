@@ -1,17 +1,17 @@
 class CustomException(message: String) extends Exception(message)
 
-class Palindrome {
-  def isPalindrome(list: List[Int]): Boolean = {
-    def innerIsPalindrome(list: List[Int], lastElement: Int): Boolean = {
-      list match {
-        case first :: Nil => true
-        case first :: _ :: last :: Nil if first != last => false
-        case _ :: intermediate :: _ :: Nil => innerIsPalindrome(intermediate)
-      }
+def isPalindrome(list: List[Int]): Boolean = {
+  def innerIsPalindrome(list: List[Int], iterationNumber: Int): Boolean = {
+    list match {
+      case Nil => true
+      case _ :: Nil => true
+      case _ :: rest if iterationNumber > rest.length => true
+      case first :: _ if  first != list(list.length - iterationNumber) => false
+      case _ :: rest => innerIsPalindrome(rest, iterationNumber + 1)
     }
-    if (list.isEmpty) {
-      throw new CustomException("List is empty...")
-    }
-    innerIsPalindrome(list, list.head)
   }
+  if (list.isEmpty) {
+    throw new CustomException("List is empty...")
+  }
+  innerIsPalindrome(list, 1)
 }
