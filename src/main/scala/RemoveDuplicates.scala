@@ -1,3 +1,5 @@
+class CustomException(message: String) extends Exception(message)
+
 class RemoveDuplicates {
 
   def compress(list: List[Int]): List[Int] = {
@@ -8,8 +10,14 @@ class RemoveDuplicates {
         case _ :: rest => innerCompress(rest, resultantList, currentElement)
       }
     }
-    if (list.length == 0) throw new CustomException("List is empty")
-    else if(list.length == 1) list
-    else innerCompress(list, List.empty[Int], list.head)
+    if (list.length == 0) {
+      throw new CustomException("List is empty")
+    }
+    else if(list.length == 1) {
+      list
+    }
+    else {
+      innerCompress(list, List.empty[Int], list.head)
+    }
   }
 }

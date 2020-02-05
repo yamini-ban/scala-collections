@@ -1,3 +1,5 @@
+class CustomException(message: String) extends Exception(message)
+
 class FirstEvenNumber {
   def firstEven(list: List[Int]): Int = {
     list match {

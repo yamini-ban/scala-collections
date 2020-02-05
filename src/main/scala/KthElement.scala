@@ -1,6 +1,6 @@
 class KthElement {
 
-  def Kth(list: List[Int], kthIndex: Int): Int = {
+  def kth(list: List[Int], kthIndex: Int): Int = {
 
     def innerKth(list: List[Int], kthElement: Int): Int = {
       list match {
@@ -8,9 +8,9 @@ class KthElement {
         case _ :: rest => innerKth(rest, kthElement - 1)
       }
     }
-    if (kthIndex >= list.length || kthIndex < 0)
+    if (kthIndex >= list.length || kthIndex < 0) {
         throw new CustomException(s"${kthIndex}th element does not exist.")
-      else
+    } else
         innerKth(list, kthIndex)
   }
 

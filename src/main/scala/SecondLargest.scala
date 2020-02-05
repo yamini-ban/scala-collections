@@ -12,10 +12,11 @@ class SecondLargest {
         case _ :: rest => computeSecondLargest(rest, currentLargest, secondMax)
       }
     }
-    if (list.length <= 1)
+    if (list.length <= 1) {
       throw new CustomException("List does not have enough elements...")
-    else
+    } else {
       computeSecondLargest(list, list.head, -1)
+    }
 
   }
 }

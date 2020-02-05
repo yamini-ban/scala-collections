@@ -1,3 +1,5 @@
+class CustomException(message: String) extends Exception(message)
+
 class Reverse {
   def reverseOfList(list: List[Int]): List[Int] = {
     def innerReverseOfList(list: List[Int], resultantList: List[Int]): List[Int] = {
